@@ -17,14 +17,14 @@ from turtle import tracer
 from turtle import up
 from turtle import update
 
-SIZE = 100  # Size of the player idon in pixe
+SIZE = 100
 
 board = [False for i in range(9)]  # detectar si ya está usada la casilla
 
 diff = 130 - SIZE  # Diferencia entre el tamaño de la cuadrícula y el icono
 
 
-def grid():
+def grid():  #Define la cuadricula
     """Draw tic-tac-toe grid."""
     line(-67, 200, -67, -200)
     line(67, 200, 67, -200)
@@ -32,13 +32,13 @@ def grid():
     line(-200, 67, 200, 67)
 
 
-def drawx(x, y):
+def drawx(x, y):  # Dibuja la x en la ventana
     """Draw X player."""
     line(x+diff, y + SIZE, x + SIZE, y+diff)
     line(x+diff, y+diff, x + SIZE, y + SIZE)
 
 
-def drawo(x, y):
+def drawo(x, y):  # Dibuja la x en la ventana
     """Draw O player."""
     up()
     goto(x + 67, y + diff//2)
@@ -46,7 +46,7 @@ def drawo(x, y):
     circle(SIZE//2)
 
 
-def floor(value):
+def floor(value): 
     """Round value down to grid with square size 133."""
     return ((value + 200) // 133) * 133 - 200
 
@@ -55,7 +55,7 @@ state = {'player': 0}
 players = [drawx, drawo]
 
 
-def tap(x, y):
+def tap(x, y): # Ubicación del click del usuario
     """Draw X or O in tapped square."""
     x = floor(x)
     y = floor(y)
