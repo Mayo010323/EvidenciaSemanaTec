@@ -1,16 +1,17 @@
 #Jesus Ramirez Delgado
 #A01274723
 #Equipo 3
-#15 / 9 / 2022
-
+#Complete
+#15-Sept-2022
+#Ver 1.1
 
 
 """
 Pacman, classic arcade game
 
 """
-
-from random import choice #Import libraries
+#Import libraries
+from random import choice 
 from turtle import *
 
 from freegames import floor, vector
@@ -52,8 +53,8 @@ tiles = [
 ]
 # fmt: on
 
-
-def square(x, y): #Square function
+#Square function
+def square(x, y): 
     """Draw square using path at (x, y)."""  
     path.up()
     path.goto(x, y)
@@ -66,16 +67,16 @@ def square(x, y): #Square function
 
     path.end_fill()
 
-
-def offset(point): #Points function
+#Points function
+def offset(point): 
     """Return offset of point in tiles."""
     x = (floor(point.x, 20) + 200) / 20
     y = (180 - floor(point.y, 20)) / 20
     index = int(x + y * 20)
     return index
 
-
-def valid(point):                                     #define walls and borders
+ #define walls and borders
+def valid(point):                                    
     """Return True if point is valid in tiles."""
     index = offset(point)
 
@@ -89,8 +90,8 @@ def valid(point):                                     #define walls and borders
 
     return point.x % 20 == 0 or point.y % 20 == 0
 
-
-def world():                       #funcstion that makes the turtle draw the board
+ #function that makes the turtle draw the board
+def world():                      
     """Draw world using path."""
     bgcolor('white')               #Colors of the board    
     path.color('green')
@@ -108,8 +109,8 @@ def world():                       #funcstion that makes the turtle draw the boa
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
 
-
-def move():                               #function that order how to move the pacman and ghosts
+#function that order how to move the pacman and ghosts
+def move():                               
     """Move pacman and all ghosts."""
     writer.undo()
     writer.write(state['score'])        #Pacman movement 
@@ -132,7 +133,7 @@ def move():                               #function that order how to move the p
     goto(pacman.x + 10, pacman.y + 10)
     dot(20, 'yellow')
 
-    for point, course in ghosts:            #ghosts move with random algorithm
+    for point, course in ghosts:  #ghosts move with random algorithm
         if valid(point + course):
             point.move(course)
         else:
